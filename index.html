@@ -5,10 +5,24 @@
 	<title>Maps</title>
 	<link rel = "stylesheet" href="style.css">
 	<script src = "js/myscripts.js" type="text/javascript"></script>
-	
+	 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key= AIzaSyBc2Q_dCM_a1lSyzK3hK-_g0WE_m6rChSM &sensor=false"></script>
+
 </head>
-<body>
-<h1>Интерактивная карта церковь города Сумы</h1>
-<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1G78TYVt8T2sfXi5sqU0yX2s-Krk" width="640" height="480"></iframe>
+ <body onload="ShowPositon(59.940224, 30.308533)">
+ 	<h1>Интерактивная карта церковь города Сумы</h1>
+    <div id="map_canvas" style="width:400px; height:400px"></div>
+    <button onclick="ShowPositon(50.91112, 34.79181)">Ильинская церковь</button></br>
+    <button onclick="ShowPositon(50.90923, 34.80069)">Свято-Преображенский собор</button></br>
+    <button onclick="ShowPositon(50.91733, 34.81646)">Троицкий собор</button></br>
+    <button onclick="ShowPositon(50.91138, 34.8111)">Римско Католический Костел</button></br>
+    <button onclick="ShowPositon(50.90074, 34.77089)">Пантелеймоновский Храм Украинской Православной Церкви</button></br>
+    <button onclick="ShowPositon(50.91666, 34.77938)">Церковь Христос для всех</button></br>
+    <button onclick="ShowPositon(50.91174, 34.80068)">Воскресенская Церковь</button></br>
+    <button onclick="ShowPositon(50.91652, 34.81748)">Парафия Благовещения Пресвятой Девы Марии</button></br>
+    <button onclick="ShowPositon(50.92075, 34.81592)">Храм святого преподобного Агапита Киево-Печерского</button></br>
+    <button onclick="ShowPositon(50.92134, 34.76771)">Мусульманская мечеть "Баракят"</button>
+</body>
+</html>
+<!--<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1G78TYVt8T2sfXi5sqU0yX2s-Krk" width="640" height="480"></iframe>-->
 </body>
 </html>
