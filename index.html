@@ -1,28 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Maps</title>
-	<link rel = "stylesheet" href="style.css">
-	<script src = "js/myscripts.js" type="text/javascript"></script>
-	 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key= AIzaSyBc2Q_dCM_a1lSyzK3hK-_g0WE_m6rChSM &sensor=false"></script>
+  <meta charset="UTF-8">
+  <title>Maps</title>
+  <link rel = "stylesheet" href="style.css">
+  <script src = "js/myscripts.js" type="text/javascript"></script>
+   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD6rbfjoYHV2luQegec_3_jbdRQobKaEP4 &sensor=false"></script>
+<script>
+  function mapSit()
+  {
+   var cherch1 = new google.maps.LatLng(50.91112, 34.79181);
+   //Ильинская церковь
+   var cherch2 = new google.maps.LatLng(50.90923, 34.80069);
+   //Свято-Преображенский собор
+   var cherch3 = new google.maps.LatLng(50.91733, 34.81646); 
+  //Троицкий собор
+   var cherch4 = new google.maps.LatLng(50.91138, 34.8111);
+   //Римско Католический Костел
+   var cherch5 = new google.maps.LatLng(50.90074, 34.77089);
+   //Пантелеймоновский Храм Украинской Православной Церкви
+   var cherch6 = new google.maps.LatLng(50.91666, 34.77938);
+   //Церковь Христос для всех
+   var cherch7 = new google.maps.LatLng(50.91174, 34.80068);
+   //Воскресенская Церковь
+   var cherch8 = new google.maps.LatLng(50.91652, 34.81748);
+   //Парафия Благовещения Пресвятой Девы Марии
+   var cherch9 = new google.maps.LatLng(50.92075, 34.81592);
+   //Храм святого преподобного Агапита Киево-Печерского
+   var cherch10 = new google.maps.LatLng(50.92134, 34.76771);
+   //Мусульманская мечеть "Баракят
+   
+   var mapProp = {
+    center:cherch1,
+    zoom:9,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+   };
+   var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+   var marker = [
+    new google.maps.Marker({
+      Name:'Ильинская церковь',
+      position:cherch1,
+      map:map,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Свято-Преображенский собор',
+      position:cherch2,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Троицкий собор',
+      position:cherch3,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Римско Католический Костел',
+      position:cherch4,
+      animation:google.maps.Animation.BOUNCE
+     }),
+    new google.maps.Marker({
+      Name:'Пантелеймоновский Храм Украинской Православной Церкви',
+      position:cherch5,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Церковь Христос для всех',
+      position:cherch6,
+      animation:google.maps.Animation.BOUNCE
+   }),
+    new google.maps.Marker({
+      Name:'Воскресенская Церковь',
+      position:cherch7,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Парафия Благовещения Пресвятой Девы Марии',
+      position:cherch8,
+      animation:google.maps.Animation.BOUNCE
+    }),
+    new google.maps.Marker({
+      Name:'Храм святого преподобного Агапита Киево-Печерского',
+      position:cherch9,
+      animation:google.maps.Animation.BOUNCE
+     }),
+    new google.maps.Marker({
+      Name:'Мусульманская мечеть Баракят',
+      position:cherch10,
+      animation:google.maps.Animation.BOUNCE
+    })
+   ];
 
+   var flightPath = new google.maps.Polyline({
+      path:[cherch3, cherch1, cherch2, cherch4, cherch5, cherch6, cherch7, cherch8, cherch9, cherch10],
+      strokeColor: "#FF0000",
+      strokeOpacity:0.4 ,
+      strokeWeight:2,
+      fillColor:"#4f4f4f",
+      fillOpacity:0.4      
+   });
+
+   flightPath.setMap(map);
+
+   var myCity  = new google.maps.Circle({
+    center:cherch1,
+    //radius:500,
+    //strokeColor:"#FF0000",
+   // strokeOpacity:0.5,
+   // strokeWeight:2,
+    fillColor:"#FF0000",
+    //fillOpacity:0.4
+   });
+
+   myCity.setMap(map);
+
+   for(i=0;i<marker.length;i++)
+   {
+    var m = marker[i];
+    m.setMap(map);
+    var infoWindow = new google.maps.InfoWindow({
+      content:m.Name
+    });
+
+    infoWindow.open(map,m);
+
+    google.maps.event.addListener(m,'click',function(){
+       map.setZoom(8);
+       map.setCenter(m.getPosition());
+    });
+   }
+  }
+  google.maps.event.addDomListener(window,'load',mapSit);
+</script>
 </head>
- <body onload="ShowPositon(59.940224, 30.308533)">
- 	<h1>Интерактивная карта церковь города Сумы</h1>
-    <div id="map_canvas" style="width:400px; height:400px"></div>
-    <button onclick="ShowPositon(50.91112, 34.79181)">Ильинская церковь</button></br>
-    <button onclick="ShowPositon(50.90923, 34.80069)">Свято-Преображенский собор</button></br>
-    <button onclick="ShowPositon(50.91733, 34.81646)">Троицкий собор</button></br>
-    <button onclick="ShowPositon(50.91138, 34.8111)">Римско Католический Костел</button></br>
-    <button onclick="ShowPositon(50.90074, 34.77089)">Пантелеймоновский Храм Украинской Православной Церкви</button></br>
-    <button onclick="ShowPositon(50.91666, 34.77938)">Церковь Христос для всех</button></br>
-    <button onclick="ShowPositon(50.91174, 34.80068)">Воскресенская Церковь</button></br>
-    <button onclick="ShowPositon(50.91652, 34.81748)">Парафия Благовещения Пресвятой Девы Марии</button></br>
-    <button onclick="ShowPositon(50.92075, 34.81592)">Храм святого преподобного Агапита Киево-Печерского</button></br>
-    <button onclick="ShowPositon(50.92134, 34.76771)">Мусульманская мечеть "Баракят"</button>
-</body>
-</html>
-<!--<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1G78TYVt8T2sfXi5sqU0yX2s-Krk" width="640" height="480"></iframe>-->
+<body>
+<div id="googleMap" style="width:600px; height:400px">
+</div>
 </body>
 </html>
